@@ -1,11 +1,11 @@
-windowsÏÂÔËĞĞÇë°´ÈçÏÂ²½Öè½øĞĞ:
-ÔËĞĞstart-namenode.bat
-ÔËĞĞstart-datanode.bat
-ÔËĞĞstart-hmaster.bat
-ÔËĞĞstart-region.bat
-ÔËĞĞhphoto.bat
-hphoto²ÎÊı:
+windowsä¸‹è¿è¡Œè¯·æŒ‰å¦‚ä¸‹æ­¥éª¤è¿›è¡Œ:
+è¿è¡Œstart-namenode.bat
+è¿è¡Œstart-datanode.bat
+è¿è¡Œstart-hmaster.bat
+è¿è¡Œstart-region.bat
+è¿è¡Œhphoto.bat
+hphotoå‚æ•°:
 hphoto start [--port=60020][--browser=false]
 
---port		²ÎÊı¿ÉÑ¡,Ä¬ÈÏÊÇ60020,µ«ÊÇµÚÒ»´ÎÔËĞĞ±¾³ÌĞòÑ¡ÓÃÁËport,ÄÇÃ´ÏÂ»Ø¾ÍµÃ¼ÌĞøÊ¹ÓÃÕâ¸ö²ÎÊı,·ñÔò³ÌĞòÃ»·¨½øĞĞRPCÍ¨ĞĞ.
---browser	²ÎÊı¿ÉÑ¡,ÊÇ²»ÊÇÔÚ±¾µØ´ò¿ªä¯ÀÀÆ÷.Èç¹ûfalse²»´ò¿ª,·ñÔò´ò¿ªä¯ÀÀÆ÷.
+--port		å‚æ•°å¯é€‰,é»˜è®¤æ˜¯60020,ä½†æ˜¯ç¬¬ä¸€æ¬¡è¿è¡Œæœ¬ç¨‹åºé€‰ç”¨äº†port,é‚£ä¹ˆä¸‹å›å°±å¾—ç»§ç»­ä½¿ç”¨è¿™ä¸ªå‚æ•°,å¦åˆ™ç¨‹åºæ²¡æ³•è¿›è¡ŒRPCé€šè¡Œ.
+--browser	å‚æ•°å¯é€‰,æ˜¯ä¸æ˜¯åœ¨æœ¬åœ°æ‰“å¼€æµè§ˆå™¨.å¦‚æœfalseä¸æ‰“å¼€,å¦åˆ™æ‰“å¼€æµè§ˆå™¨.
