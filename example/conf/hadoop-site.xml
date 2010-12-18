@@ -1,0 +1,51 @@
+<configuration>
+<property>
+<name>hadoop.tmp.dir</name>
+<value>/${exec.home}/hadoop/data/tmp</value>
+</property>
+<property>
+<name>fs.default.name</name>
+<value>hdfs://localhost:9000</value>
+</property>
+<property>
+<name>dfs.name.dir</name>
+<value>/${exec.home}/hadoop/name/1,/${exec.home}/hadoop/name/2</value>
+</property>
+<property>
+<name>dfs.data.dir</name>
+<value>/${exec.home}/hadoop/data</value>
+</property>
+<property>
+<name>mapred.job.tracker</name>
+<value>127.0.0.1:20000</value>
+</property>
+<property>
+<name>mapred.system.dir</name>
+<value>/tmp/hadoop/mapred/system</value>
+</property>
+<property>
+  <name>dfs.replication</name>
+  <value>1</value>
+</property>
+<property>
+  <name>session.id</name>
+  <value>windows.clusters</value>
+</property>
+<property>
+  <name>tasktracker.http.port</name>
+  <value>50060</value>
+</property>
+<property>
+  <name>tasktracker.http.bindAddress</name>
+  <value>10.50.23.106</value>
+</property>
+<property>
+  <name>mapred.task.tracker.http.address</name>
+  <value>10.50.23.106:50060</value>
+</property>
+<property>
+  <name>dfs.web.ugi</name>
+  <value>mashihua,root</value>
+</property>
+
+</configuration>

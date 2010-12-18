@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app id="hphoto">
+	<filter>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+
+    <!-- set the amount of seconds the conf file will be checked for reload
+    can be a valid integer (0 denotes check every time,
+          empty/not set denotes no reload check) -->
+    <init-param>
+    <param-name>confReloadCheckInterval</param-name>
+    <param-value></param-value>
+    </init-param>
+
+    <!-- sets up log level (will be logged to context log)
+    can be: TRACE, DEBUG, INFO (default), WARN, ERROR, FATAL, log4j, commons, sysout:{level} (ie, sysout:DEBUG)
+          if you are having trouble using normal levels use sysout:DEBUG -->
+    <init-param>
+    <param-name>logLevel</param-name>
+    <param-value>INFO</param-value>
+    </init-param>
+
+    <!-- you can disable status page if desired
+    can be: true, false (default true) -->
+    <init-param>
+    <param-name>statusEnabled</param-name>
+    <param-value>true</param-value>
+    </init-param>
+
+        <!-- you can change status path so that it does not
+          conflict with your installed apps (note, defaults
+          to /rewrite-status) note, must start with / -->
+    <init-param>
+            <param-name>statusPath</param-name>
+            <param-value>/hp/rewrite-status</param-value>
+    </init-param>
+
+    </filter>
+    <filter-mapping>
+    <filter-name>UrlRewriteFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <servlet>
+		<servlet-name>Captcha</servlet-name>
+		<display-name>Captcha</display-name>
+		<servlet-class>com.hphoto.server.Captcha</servlet-class>
+	</servlet>	   
+	
+	<servlet>
+        <servlet-name>addalbum</servlet-name>
+        <display-name>addalbum</display-name>
+        <servlet-class>com.hphoto.web.addAlbum_jsp</servlet-class>
+    </servlet> 
+	
+	<servlet>
+        <servlet-name>index</servlet-name>
+        <display-name>index</display-name>
+        <servlet-class>com.hphoto.web.index_jsp</servlet-class>
+    </servlet>  
+    
+	<servlet>
+        <servlet-name>createalbum</servlet-name>
+        <servlet-class>com.hphoto.web.createAlbum_jsp</servlet-class>
+    </servlet> 
+    
+    <servlet>
+        <servlet-name>home</servlet-name>
+        <servlet-class>com.hphoto.web.home_jsp</servlet-class>
+    </servlet> 
+     
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>com.hphoto.web.login_jsp</servlet-class>
+    </servlet>  
+     
+     <servlet>
+        <servlet-name>photo</servlet-name>
+        <servlet-class>com.hphoto.web.photo_jsp</servlet-class>
+    </servlet>
+     
+     <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>com.hphoto.web.register_jsp</servlet-class>
+    </servlet>  
+    
+    <servlet>
+        <servlet-name>view</servlet-name>
+        <servlet-class>com.hphoto.web.view_jsp</servlet-class>
+    </servlet>  
+    
+    <servlet>
+        <servlet-name>album</servlet-name>
+        <servlet-class>com.hphoto.web.album_jsp</servlet-class>
+    </servlet>  
+    
+    <servlet>
+        <servlet-name>webupload</servlet-name>
+        <servlet-class>com.hphoto.web.webupload_jsp</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>bye</servlet-name>
+        <servlet-class>com.hphoto.web.bye_jsp</servlet-class>
+    </servlet>
+
+    
+	<servlet-mapping>
+		<servlet-name>Captcha</servlet-name>
+		<url-pattern>/hp/captcha.jpg</url-pattern>
+	</servlet-mapping>
+	
+     <servlet-mapping>
+		<servlet-name>addalbum</servlet-name>
+		<url-pattern>/hp/addAlbum</url-pattern>
+	</servlet-mapping>
+ 	 
+    <servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+		    
+    <servlet-mapping>
+		<servlet-name>createalbum</servlet-name>
+		<url-pattern>/hp/createAlbum</url-pattern>
+	</servlet-mapping>
+	       
+    <servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+		       
+    <servlet-mapping>
+		<servlet-name>login</servlet-name>
+		<url-pattern>/hp/login</url-pattern>
+	</servlet-mapping>  
+		    
+    <servlet-mapping>
+		<servlet-name>register</servlet-name>
+		<url-pattern>/hp/register</url-pattern>
+	</servlet-mapping>
+	      
+    <servlet-mapping>
+		<servlet-name>photo</servlet-name>
+		<url-pattern>/hp/photo</url-pattern>
+	</servlet-mapping> 
+	         
+    <servlet-mapping>
+		<servlet-name>view</servlet-name>
+		<url-pattern>/hp/view</url-pattern>
+	</servlet-mapping> 
+		   
+    <servlet-mapping>
+		<servlet-name>webupload</servlet-name>
+		<url-pattern>/hp/webupload</url-pattern>
+	</servlet-mapping> 
+	 
+    <servlet-mapping>
+		<servlet-name>album</servlet-name>
+		<url-pattern>/hp/album</url-pattern>
+	</servlet-mapping> 
+   
+   <servlet-mapping>
+		<servlet-name>bye</servlet-name>
+		<url-pattern>/bye</url-pattern>
+	</servlet-mapping> 
+
+    <welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	
+	<taglib>
+	  <taglib-uri>http://jakarta.apache.org/taglibs/i18n</taglib-uri>
+	  <taglib-location>/WEB-INF/taglibs-i18n.tld</taglib-location>
+	</taglib>
+	
+</web-app>

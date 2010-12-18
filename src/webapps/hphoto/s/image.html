@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="header">
+<table width="100%">
+<tr>
+<td width="100%"><a href="/"><img src="images/logo-.gif" alt="Logo" /></a></td>
+<td><nobr>
+<% if(login){%>
+<b><%=user%></b> | <a href="/bye"><i18n:message key="user.login.out"/></a> | 
+<%}else{ %>  
+<a href="/">首页</a> 
+</nobr>
+</td>
+</tr>
+</table>
+</div>
+<div id="contain">
+<div id="mainbg">
+<div id="navbar">
+
+</div> 
+
+</div>
+<div id="clear"></div>
+</div>
+<div id="footer">
+<p id="quota" class="<%=className%>"><i18n:message key="footer.available">
+  <i18n:messageArg value="<%= StringUtil.humanReadableInt(usedSpace) %>"/>
+  <i18n:messageArg value="<%=percent%>"/>
+  <i18n:messageArg value="<%= StringUtil.humanReadableInt(totalSpace) %>"/>
+</i18n:message></p>
+<a target="_blank" href="#"><i18n:message key="footer.terms"/></a> -
+<a target="_blank" href="#"><i18n:message key="footer.policy"/></a> -
+<a target="_blank" href="#"><i18n:message key="footer.contact"/></a> 
+</div>
+<!-- 
+<p>person orignal url</p>
+<p><img src="/image?u=flashget&corp=c&max=48" /></p>
+<p>redir url</p>
+<p><img src="/image/flashget/AHHYILU/s48-c/flashget" /></p>
+
+<p>category orignal url</p>
+<p><img src="/image?u=flashget&category=UntitledAlbum&corp=c&max=144" /></p>
+<p>redir url</p>
+<p><img src="/image/flashget/UntitledAlbum/s144-c/UntitledAlbum.jpg" /></p>
+
+<p>album orignal url</p>
+<p><img src="/image?u=flashget&category=UntitledAlbum&corp=&max=144&id=144115188075855872" /></p>
+<p>redir url</p>
+<p><img src="/image/flashget/UntitledAlbum/s144/144115188075855872.jpg" /></p>
+
+<p>photo orignal url</p>
+<p><img src="/image?u=flashget&category=UntitledAlbum&corp=&max=600&id=144115188075855872" /></p>
+<p>redir url</p>
+<p><img src="/image/beijing.josh/category/144115188075855872.jpg?max=600" /></p>
+
+-->
+</body>
+</html>

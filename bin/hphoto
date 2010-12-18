@@ -1,0 +1,20 @@
+#!/bin/sh
+# 
+# The Hphoto command script
+#
+#
+# if no args specified, show usage
+if [ $# = 0 ]; then
+  echo "Usage: hadoop COMMAND"
+  echo "where COMMAND is one of:"
+  echo "satrt             start server"
+  exit 1
+fi
+
+# get arguments
+COMMAND=$1
+shift
+
+
+# run it
+exec java -cp ".:hphoto.jar" com.hphoto.server.UserService $COMMAND "$@"

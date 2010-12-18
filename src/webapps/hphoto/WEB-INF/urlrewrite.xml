@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN"
+        "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+
+<!--
+
+    Configuration file for UrlRewriteFilter
+    http://tuckey.org/urlrewrite/
+
+-->
+<urlrewrite>
+
+	<rule>
+    <from>^/image/([^/]+)/([^/]+)/(s)?([0-9]+)-?([^/]?)/([0-9]+)\.jpg$</from>
+    <to>/image?user=$1&amp;album=$2&amp;corp=$5&amp;max=$4&amp;id=$6</to>
+    </rule>  
+ 
+    <rule>
+    <from>^/image/([^/]+)/([^/]+)/(s)?([0-9]+)-?([^/]?)/[^0-9]+\.jpg$</from>
+    <to>/image?user=$1&amp;album=$2&amp;corp=$5&amp;max=$4&amp;high=h</to>
+    </rule>
+         
+    <rule>
+    <from>^/image/([^/]+)/([^/]+)/(s)?([0-9]+)-?(.?)/\1$</from>
+    <to>/image?user=$1&amp;corp=$5&amp;max=$4</to>
+    </rule>
+    
+    <rule>
+    <from>^/image/([^/]+)/([^/]+)/([0-9]+)\.jpg(\?([^=]+=.+))?</from>
+    <to>/image?user=$1&amp;album=$2&amp;id=$3&amp;$5</to>
+    </rule>
+ 
+
+    <rule>
+    <from>^/$</from>
+    <to>/index</to>
+    </rule>
+        
+    <rule>
+    <from>^/((?!home|bye)[^/\?]+)/?$</from>
+    <to>/hp/view?user=$1</to>
+    </rule>
+    
+    <rule>
+    <from>^/(home[^/\?]+)/?$</from>
+    <to>/hp/view?user=$1</to>
+    </rule>
+      
+    <rule>
+    <from>^/(bye[^/\?]+)/?$</from>
+    <to>/hp/view?user=$1</to>
+    </rule>   
+
+    <rule>
+    <from>^/data/([^/]+)/([^/]+)/([^/]+)/([^/?]+)\?(.+)$</from>
+    <to>/hp/data?$1=$2&amp;$3=$4&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/data/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^/]+)/([^\?]+)\?(.+)$</from>
+    <to>/hp/data?$1=$2&amp;$3=$4&amp;$5=$6&amp;$7</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?!(home|image|s|hp|data|api|bye))([^/]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(bye))(\1[^/]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(home))(\1[^/]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(image))(\1[^/?]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(s))(\1[^/]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(hp))(\1[^/]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(data))(\1[^/]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(api))(\1[^/]+)/([^\?/]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/album?user=$2&amp;category=$3&amp;$5</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?!(home|image|s|hp|data|api))([^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?!(home|image|s|hp|data|api|bye))([^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=bye)([^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=home)([^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(image))(\[^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(s))(\1[^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(hp))(\1[^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(data))(\1[^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+    
+    <rule>
+    <from>^/(?=(api))(\1[^/]+)/([^/]+)/([0-9]+)(\?([^=]+=.+))?$</from>
+    <to>/hp/photo?user=$2&amp;category=$3&amp;id=$4&amp;$6</to>
+    </rule>
+
+</urlrewrite>
+

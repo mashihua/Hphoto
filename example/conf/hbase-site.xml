@@ -1,0 +1,12 @@
+<configuration>
+<property>
+<name>hbase.rootdir</name>
+<value>/hbase/root</value>
+<description>The directory shared by region servers.</description>
+</property>
+<property>
+<name>hphoto.server.mini</name>
+<value>false</value>
+<description>setup the hphoto application is mini cluster.</description>
+</property>
+</configuration>

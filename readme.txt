@@ -1,0 +1,5 @@
+Hphoto是一个模仿picasaweb的示例应用程序,采用Hadoop的0.15.1版本和HBase作为存储系统,写于2007年末.
+
+此应用程序仅完成了大多数的功能.example目录下是实际可运行的程序.具体步骤请看该目录下的README
+
+修改了Hadoop中的DU.java和DF.java.可运行在window平台上.

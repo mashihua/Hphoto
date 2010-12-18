@@ -1,0 +1,168 @@
+form.hform fieldset {
+	margin-bottom: 10px;
+	border:1px solid #C1D9FF;	 
+}
+
+form.hform legend {
+	padding: 0 2px;
+	font-weight: bold;
+	_margin: 0 -7px; /* IE Win */
+}
+
+form.hform label {	
+	line-height: 1.8;
+	vertical-align: top;
+	cursor: hand;
+	display: inline-block;
+	font-weight: bold;
+}
+
+form.hform fieldset p {
+	list-style: none;
+	padding: 5px;
+	margin: 0;
+}
+
+form.hform fieldset fieldset {
+	border: none;
+	margin: 3px 0 0;
+}
+
+form.hform fieldset fieldset legend {
+	padding: 0 0 5px;
+	font-weight: normal;
+}
+
+form.hform fieldset fieldset label {
+	display: block;
+	width: auto;
+}
+
+form.hform label { width: 8em;  } /* Width of labels */
+form.hform fieldset fieldset label { margin-left: 103px; } /* Width plus 3 (html space) */
+form.hform label.error {
+	margin-left: 103px;
+	width: 220px;
+}
+
+
+
+form.hform input.submit {
+/*margin-left: 103px;*/
+}
+
+/*\*//*/ form.hform legend { display: inline-block; } /* IE Mac legend fix */
+
+
+form.hform {
+	margin:0 0 3em;
+	font-size: 1.0em;
+	color: #333;
+}
+
+form.hform legend {
+	border:1px solid #C1D9FF; 
+	font-weight:bold;
+	padding:0.2em 0.5em;
+	font-size:16px;
+}
+
+form.hform label {
+	color: #333;	
+	margin-left:20px;
+	padding-top:3px;
+	vertical-align:top;
+	display: inline-block;
+	line-height: 1.8;
+	vertical-align: top;
+	cursor: hand;
+}
+
+form.hform fieldset {
+	border:1px solid #C1D9FF;	
+}
+
+form.hform fieldset fieldset {
+	border:1px solid #C1D9FF; 
+	font-weight:bold;
+	padding:0.2em 0.5em; 	
+	font-size:18px;
+}
+
+form.hform fieldset p, form.hform fieldset fieldset {
+	padding: 5px 10px 7px;
+}
+
+form.hform label.error, label.error {
+	/* remove the next line when you have trouble in IE6 with labels in list */
+	display: none;
+	color: red;
+	font-style: italic
+} 
+
+form.hform label span{
+	color: #333;
+}
+
+
+div.error { display: none; }
+input{border:1px solid #A7A6AA;}
+input:focus { border: 1px solid #F5C8B9; }
+input.error { border: 1px dotted red; }
+
+
+input.default,input.warning,input.loading,input.ok,input.error{
+background:transparent;
+border:1px solid #A7A6AA;
+height:18px;
+width:20em;
+}
+textarea.default{
+width:17em;
+background:transparent;
+border:1px solid #A7A6AA;
+}
+input.warning{
+background:url(../images/input_warning_corner.gif) no-repeat scroll right bottom;
+}
+
+input.ok{
+background:url(../images/input_ok_corner.gif) no-repeat scroll right top;
+}
+
+input.error{
+background:url(../images/input_error_corner.gif) no-repeat scroll right bottom;
+}
+
+
+input.loading{
+background:url(../images/indicator.gif) no-repeat scroll right center;
+}
+
+form.hform h4{
+	margin-left:20px;
+}
+
+form.hform h2{
+	margin:0.5em 0;
+	text-indent:2em;
+}
+form.hform em.invalid {
+display:inline;
+margin-left:10px;
+width:auto;
+color:red;
+}
+
+form.hform h5{
+text-indent:11em;
+color:#6F6F6F;
+font-size:smaller;
+font-size:1em;
+font-weight:normal;
+}
+
+form.hform .nocmx{
+	font-weight: normal;
+	margin-left:0;
+}

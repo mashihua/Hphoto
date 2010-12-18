@@ -1,0 +1,6 @@
+::HBase commands:
+setupHbase:org.apache.hadoop.hbase.SetupConfiguration:create hbase simple config file
+shell:org.apache.hadoop.hbase.Shell:run the hbase shell
+shellserver:org.apache.hadoop.hbase.shell.server.HShellServer:run the hbase shell server
+master:org.apache.hadoop.hbase.HMaster:run a hbase HMaster node
+regionserver:org.apache.hadoop.hbase.HRegionServer:run a hbase HRegionServer node

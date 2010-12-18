@@ -1,0 +1,11 @@
+windows下运行请按如下步骤进行:
+运行start-namenode.bat
+运行start-datanode.bat
+运行start-hmaster.bat
+运行start-region.bat
+运行hphoto.bat
+hphoto参数:
+hphoto start [--port=60020][--browser=false]
+
+--port		参数可选,默认是60020,但是第一次运行本程序选用了port,那么下回就得继续使用这个参数,否则程序没法进行RPC通行.
+--browser	参数可选,是不是在本地打开浏览器.如果false不打开,否则打开浏览器.

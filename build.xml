@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<project name="hphoto" default="build">
+
+  <!-- Load all the default properties, and any the user wants    -->
+  <!-- to contribute (without having to type -D or edit this file -->
+  <property file="${user.home}/build.properties" />
+  <property file="${basedir}/build.properties" />
+ 
+  <property name="name" value="hphoto"/>
+  <property name="final.name" value="${name}"/>
+	
+  
+  <property name="src.dir" value="${basedir}/src/java"/>
+  <property name="lib.dir" value="${basedir}/lib"/>
+  <property name="lib.dir" value="${basedir}/lib"/>
+  <property name="web.src.dir" value="${basedir}/src/webapps"/>
+  <property name="build.encoding" value="ISO-8859-1"/>
+  <property name="conf.dir" value="${basedir}/conf"/>
+  <property name="build.dir" value="${basedir}/build"/>
+  <property name="build.classes" value="${build.dir}"/>
+  <property name="build.web.dir" value="${build.dir}/webapps"/>
+  <property name="test.src.dir" value="${basedir}/src/test"/>
+  
+  <property name="javadoc.link.java"
+	    value="http://java.sun.com/j2se/1.5/docs/api/"/>
+  <property name="dist.dir" value="${build.dir}/${final.name}"/>
+	
+  <property name="javac.debug" value="on"/>
+  <property name="javac.optimize" value="on"/>
+  <property name="javac.deprecation" value="off"/>
+  <property name="javac.version" value="1.5"/>
+  <property name="javac.args" value=""/>
+  <property name="javac.args.warnings" value="-Xlint:unchecked"/>
+
+  <!-- the normal classpath -->
+  <path id="classpath">
+  	<pathelement location="${build.dir}"/>
+    <fileset dir="${lib.dir}">
+      <include name="**/*.jar" />
+    </fileset>
+  </path>
+
+
+
+  <!-- ====================================================== -->
+  <!-- Stuff needed by all targets                            -->
+  <!-- ====================================================== -->
+  <target name="init">
+    <mkdir dir="${build.dir}"/>
+    <mkdir dir="${build.classes}"/>
+  	<mkdir dir="${build.web.dir}"/>
+  	<mkdir dir="${build.web.dir}/hphoto/WEB-INF"/>
+  	<!--
+  	<copy todir="${build.web.dir}/hphoto">
+  	      <fileset dir="${web.src.dir}">
+  	        <exclude name="**/*.jsp" />
+  	      </fileset>
+  	</copy>
+  	-->
+  </target>
+
+	<taskdef classname="org.apache.jasper.JspC" name="jsp-compile" >
+	      <classpath refid="classpath"/>
+	 </taskdef>
+
+	
+  <!-- =================================================================== -->
+  <!-- Compiles the source directory                                       -->
+  <!-- =================================================================== -->
+  <target name="build" depends="init">
+    <javac encoding="${build.encoding}" 
+    	   srcdir="${src.dir}"
+           destdir="${build.classes}"
+    		debug="${javac.debug}"
+			optimize="${javac.optimize}"
+			target="${javac.version}"
+			source="${javac.version}"
+			deprecation="${javac.deprecation}">
+	<compilerarg line="${javac.args} ${javac.args.warnings}" />
+     <classpath refid="classpath"/>
+    </javac>
+  </target>
+	
+  <target name="compile-web-classes" depends="init, build">	
+		<jsp-compile
+		     uriroot="${web.src.dir}/hphoto"
+		     outputdir="${build.dir}"
+		     package="com.hphoto.web">		 
+		</jsp-compile>
+		
+		<javac 
+		     encoding="${build.encoding}"
+		     srcdir="${build.dir}"
+		     destdir="${build.classes}"
+		     debug="${javac.debug}"
+		     optimize="${javac.optimize}"
+		     target="${javac.version}"
+		     source="${javac.version}"
+		     deprecation="${javac.deprecation}">
+		      <compilerarg line="${javac.args} ${javac.args.warnings}" />
+		      <classpath refid="classpath"/>
+			</javac>
+		 <copy todir="${build.classes}">
+		      <fileset 
+		        dir="${src.dir}"
+		        includes="**/*.properties"
+		      />
+		 </copy>
+  		
+  		<copy todir="${build.web.dir}/">
+  			      <fileset 
+  			        dir="${web.src.dir}/"
+  			        excludes="**/*.jsp"
+  			      />
+  		</copy>
+</target>
+	
+	
+	  <!-- ================================================================== -->
+	  <!-- Make hadoop-exe.jar                                                  -->
+	  <!-- ================================================================== -->
+	  <!--                                                                    -->
+	  <!-- ================================================================== -->
+
+	  <target name="hphoto-exe" depends="compile-web-classes">
+	  <jar jarfile="${build.dir}/${final.name}.jar"
+	       basedir="${build.classes}"> 
+	    <manifest>      
+	      <attribute name="Main-Class" value="com/hphoto/server/UserService"/>
+	      <attribute name="Class-Path" value=".hadoop-exe.jar"/>
+	      <section name="com/hphoto">
+	        <attribute name="Implementation-Title" value="Hphoto"/>
+	        <attribute name="Implementation-Version" value="1.0"/>
+	        <attribute name="Implementation-Vendor" value="Flashget"/>
+	      </section>
+	    </manifest>
+	  	<zipfileset src="${lib.dir}/commons-beanutils.jar" includes="org/"/>
+	  	<zipfileset src="${lib.dir}/urlrewrite-2.6.0.jar" includes="org/"/>
+	  	<zipfileset src="${lib.dir}/taglibs-i18n.jar" includes="org/"/>
+	  	<zipfileset src="${lib.dir}/JSON.jar" includes="org/"/>
+	  	<zipfileset src="${lib.dir}/BrowserLauncher2-10rc4.jar" />
+	  	<zipfileset src="${lib.dir}/metadata-extractor-2.3.1.jar" includes="com/"/>	  	
+	  	<zipfileset src="${lib.dir}/jai_core.jar" />
+	  	<zipfileset src="${lib.dir}/jai_codec.jar"/>
+	  	<zipfileset src="${lib.dir}/imaging.jar" includes="com/"/>
+	  </jar>
+	  	<tar compression="gzip" destfile="${build.dir}/bin.tgz">
+	  		  <tarfileset dir="bin" mode="755"/>
+	  	</tar>
+	</target>
+		
+	  <!-- ================================================================== -->
+	  <!-- Make the all hadoop and contrib in one jar.                                      -->
+	  <!-- ================================================================== -->
+	  <!--                                                                    -->
+	  <!-- ================================================================== -->
+	 <!--target name="hadoop-all-in-one">
+	 	<jar jarfile="${build.dir}/hadoop-all.jar">
+	 		<zipgroupfileset dir="${build.dir}" includes="**/*.jar"/>
+	 		<fileset file="${basedir}/conf/hbase-default.xml"/>
+	 	</jar>
+	 </target-->
+		
+</project>
